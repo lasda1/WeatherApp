@@ -1,0 +1,43 @@
+<p id="input-custom">
+  <mat-form-field class="width-custom" appearance="legacy">
+    <mat-label>Search city</mat-label>
+    <input [(ngModel)]="city" matInput placeholder="London">
+    <mat-icon (click)="getWeather()" matSuffix>search</mat-icon>
+    <mat-hint>Hit search icon</mat-hint>
+  </mat-form-field>
+</p>
+<p>
+  <mat-card class="example-card">
+    <div class="city-exist" *ngIf="cityExist">
+      <mat-card-header class="card-header-custom">
+        <div mat-card-avatar><span class="flag-icon flag-icon-{{weatherDetail.country}} flag-custom-css"></span></div>
+        <mat-card-title class="city-name">{{weatherDetail.name}}</mat-card-title>
+        <mat-card-subtitle >{{weatherDetail.countryname}}</mat-card-subtitle>
+      </mat-card-header>
+      <div style="width: 100%;text-align: center; "><img mat-card-image class="card-image-custom"
+          src='http://openweathermap.org/img/w/{{weatherDetail.categoryIcon}}.png' alt="weather-image"></div>
+          <h1 class="weather-category"> {{weatherDetail.category}} </h1>
+      <mat-card-content class="thermometer-content-custom">
+        <div class="thermometer-min-max">
+          <app-thermometer  temp="{{weatherDetail.tempMin}}" percent="{{weatherDetail.tempMinToShow}}"
+            height="150"></app-thermometer>
+            <div class="div-temperature"><p class="text-temperature">Min temperature</p></div>
+        </div>
+        <div class="thermometer-current-weather"><app-thermometer temp=" {{weatherDetail.temp}} " percent="{{weatherDetail.tempToShow}}" height="150">
+        </app-thermometer>
+        <div class="div-temperature"><p class="text-temperature current">Current temperature</p></div>
+      </div>
+        <div class="thermometer-min-max">
+          <app-thermometer  
+                          temp="{{weatherDetail.tempMax}}" 
+                          percent="{{weatherDetail.tempMaxToShow}}"
+                          height="150">
+          </app-thermometer>
+          <div class="div-temperature" ><p class="text-temperature">Max  temperature</p></div>
+        </div>
+
+      </mat-card-content> 
+    </div>
+    <h1 *ngIf="!cityExist" class="weather-category"> No country available with this name </h1>
+  </mat-card>
+</p>

@@ -1,0 +1,19 @@
+<div [ngStyle]="{'height.px': height}" class="tg-thermometer" ng-class="size">
+	<div class="draw-a"></div>
+	<div class="draw-b"></div>
+	<div class="meter">
+		<div class="statistics">
+			<div class="percent percent-a">50°C</div>
+			<div class="percent percent-b">25°C</div>
+			<div class="percent percent-c">0°C</div>
+			<div class="percent percent-d">-25°C</div>
+			<div class="percent percent-e">-50°C</div>
+		</div>
+		<div [ngStyle]="{'height.%': percent}"  class="mercury">
+			<div class="percent-current">{{temp}}°C</div>
+			<div class="mask">
+				<div class="bg-color" style="height: calc({{height}}px - 57px);"></div>
+			</div>
+		</div>
+	</div>
+</div>
